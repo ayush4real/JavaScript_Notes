@@ -579,7 +579,6 @@ const restaurant = {
 // const events = [...new Set(gameEvents.values())];
 // console.log(events);
 
-
 // gameEvents.delete(64);
 // console.log(gameEvents);
 // const time = [...gameEvents.keys()].pop();
@@ -591,7 +590,6 @@ const restaurant = {
 
 // STRINGS in javasript
 // JavaScript strings are immutable.
-
 
 // const airline = 'Air India';
 // const plane = 'A221';
@@ -623,7 +621,6 @@ const restaurant = {
 // console.log(airline.toLowerCase());
 // console.log(airline.toLocaleUpperCase());
 // console.log(airline.toLocaleLowerCase());
-
 
 // const passenger = 'aYusH'; //Ayush
 // const passengerLower = passenger.toLowerCase();
@@ -716,8 +713,6 @@ const restaurant = {
 //   underscoreToCamel(text);
 // })
 
-
-
 // function underscoreToCamel(value){
 //   let valArr = value.split('\n');
 //   let count = 1;
@@ -736,7 +731,6 @@ const restaurant = {
 
 // console.log(newVal);
 // }
-
 
 // FUNCTIONS PART 2 - SECTION 10
 // const bookings = [];
@@ -826,24 +820,24 @@ const restaurant = {
 // or we can do like this
 // greet('Hey')('Ayush');
 
-// const greet = (greeting) => 
+// const greet = (greeting) =>
 //   (name) => {
 //     console.log(`${greeting} ${name}`);
 //   }
 // greet('Hey')('Ayush');
 
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  book(flightNum, name) {
-    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
-    this.bookings.push({
-      flight: `${this.iataCode }${flightNum}`,
-      name
-    });
-  },
-};
+// const lufthansa = {
+//   airline: 'Lufthansa',
+//   iataCode: 'LH',
+//   bookings: [],
+//   book(flightNum, name) {
+//     console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+//     this.bookings.push({
+//       flight: `${this.iataCode }${flightNum}`,
+//       name
+//     });
+//   },
+// };
 
 // lufthansa.book(239, "Ayush Kumar");
 // lufthansa.book(439, "Ayush Kumar");
@@ -896,29 +890,30 @@ const lufthansa = {
 // bookEw23('Jonas');
 
 // With Event Listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
-  this.planes++;
-  console.log(this.planes);
-}
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//   console.log(this);
+//   this.planes++;
+//   console.log(this.planes);
+// }
 
-document.querySelector(".buy").addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// ----------------------------VERY IMPORTANT----------------------------
+// document.querySelector(".buy").addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 
 // Partial application of BIND method (Pre-set parameters)+
-const addTax = (rate, value) => value + value * rate;
-console.log(addTax(0.1, 200));
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.1, 200));
 
-const addVAT = addTax.bind(null, 0.23);
-console.log(addVAT(100));
+// const addVAT = addTax.bind(null, 0.23);
+// console.log(addVAT(100));
 
-function calcTax(rate) {
-  return function totalVat(value) {
-    console.log(value + value * rate);
-  }
-}
+// function calcTax(rate) {
+//   return function totalVat(value) {
+//     console.log(value + value * rate);
+//   }
+// }
 
-calcTax(0.23)(100);
+// calcTax(0.23)(100);
 
 // IMPORTANT
 
@@ -927,31 +922,786 @@ calcTax(0.23)(100);
 // function immediately, and modify the context.
 
 // CODING CHALLENGE
-const poll = {
-  question: "What is your favourite programming language?",
-  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    let ans = Number(prompt(`${this.question}\n${this.options.join('\n')}\n(Write option in Number)`));
-    ans >= 0 && ans <= 3 ? this.answers[ans] += 1 : alert('Wrong input! click on answer button again');
-    this.displayResults();
-    this.displayResults('string');
-  },
-  displayResults(type = 'array') {
-    if (type === 'array' || type === 'Array') {
-      console.log(this.answers);
-    } else if (type === 'string' || type === 'String') {
-      console.log(`Poll results are ${this.answers.join(', ')}`);
-    }
-  }
+
+// const poll = {
+//   question: "What is your favourite programming language?",
+//   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer() {
+//     let ans = Number(prompt(`${this.question}\n${this.options.join('\n')}\n(Write option in Number)`));
+//     ans >= 0 && ans <= 3 ? this.answers[ans] += 1 : alert('Wrong input! click on answer button again');
+//     this.displayResults();
+//     this.displayResults('string');
+//   },
+//   displayResults(type = 'array') {
+//     if (type === 'array' || type === 'Array') {
+//       console.log(this.answers);
+//     } else if (type === 'string' || type === 'String') {
+//       console.log(`Poll results are ${this.answers.join(', ')}`);
+//     }
+//   }
+// };
+
+// document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+// document.querySelector('.answers').addEventListener('click', poll.displayResults.bind(poll, 'string'));
+
+// poll.displayResults.call({
+//   answers: [5, 2, 3]
+// }, 'string');
+
+// Immediately Invoked Function Expression
+// const runOnce = function(){
+//   console.log('This will never run again');
+// }
+// runOnce();
+
+// (function(){
+//   console.log('this will only run once');
+// })();
+
+// (() => {
+//   console.log('this will also never run again');
+// })();
+
+// CLOSURES IN JAVASCRIPT (VVIMP.)
+
+// const secureBooking = function () {
+//   let passengerCount = 0;
+
+//   return function () {
+//     passengerCount++;
+//     console.log(`${passengerCount} passengers`);
+//   }
+// };
+
+// Each execution context which is created, has its own variable env (aka scope of this function) with all its variables
+// const booker = secureBooking();
+// booker is able to access the passengerCount variable because it was crated in the execution context of secureBooking,
+// when the secureBooking func was called,
+// This is known as closure
+// closure has priority over scope chain
+// booker();
+// booker();
+// booker();
+
+// console.dir(booker);
+
+// let f;
+// const g = function(){
+//   const a = 23;
+//   f = function(){
+//     console.log(a * 2);
+//   }
+// }
+
+// const h = function(){
+//   const b = 777;
+//   f = function(){
+//     console.log(b * 2);
+//   }
+// }
+
+// g();
+// f();
+// console.dir(f);
+// Re-assigned f function
+// h();
+// f();
+// console.dir(f);
+
+// const boardPassengers = function(n, wait){
+//   const perGroup = n / 3;
+//   setTimeout(() => {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups each with ${perGroup} passengers`);
+//   }, wait * 1000)
+
+//   console.log(`Will start boarding in ${wait} seconds`);
+// }
+// // Closure has priority over scope chain
+// const perGroup = 25;
+// boardPassengers(180, 3);
+
+// CODING CHALLENGE
+// (function () {
+//   const header = document.querySelector('h1');
+//   header.style.color = 'red';
+//   document.querySelector('body').addEventListener('click', function(){
+//     header.style.color = 'blue';
+//   })
+// })();
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// BANKIST APP
+
+// Data
+// const account1 = {
+//   owner: "Jonas Schmedtmann",
+//   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+//   interestRate: 1.2, // %
+//   pin: 1111,
+// };
+
+// const account2 = {
+//   owner: "Jessica Davis",
+//   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+//   interestRate: 1.5,
+//   pin: 2222,
+// };
+
+// const account3 = {
+//   owner: "Steven Thomas Williams",
+//   movements: [200, -200, 340, -300, -20, 50, 400, -460],
+//   interestRate: 0.7,
+//   pin: 3333,
+// };
+
+// const account4 = {
+//   owner: "Sarah Smith",
+//   movements: [430, 1000, 700, 50, 90],
+//   interestRate: 1,
+//   pin: 4444,
+// };
+
+// const accounts = [account1, account2, account3, account4];
+
+// // Elements
+// const labelWelcome = document.querySelector(".welcome");
+// const labelDate = document.querySelector(".date");
+// const labelBalance = document.querySelector(".balance__value");
+// const labelSumIn = document.querySelector(".summary__value--in");
+// const labelSumOut = document.querySelector(".summary__value--out");
+// const labelSumInterest = document.querySelector(".summary__value--interest");
+// const labelTimer = document.querySelector(".timer");
+
+// const containerApp = document.querySelector(".app");
+// const containerMovements = document.querySelector(".movements");
+
+// const btnLogin = document.querySelector(".login__btn");
+// const btnTransfer = document.querySelector(".form__btn--transfer");
+// const btnLoan = document.querySelector(".form__btn--loan");
+// const btnClose = document.querySelector(".form__btn--close");
+// const btnSort = document.querySelector(".btn--sort");
+
+// const inputLoginUsername = document.querySelector(".login__input--user");
+// const inputLoginPin = document.querySelector(".login__input--pin");
+// const inputTransferTo = document.querySelector(".form__input--to");
+// const inputTransferAmount = document.querySelector(".form__input--amount");
+// const inputLoanAmount = document.querySelector(".form__input--loan-amount");
+// const inputCloseUsername = document.querySelector(".form__input--user");
+// const inputClosePin = document.querySelector(".form__input--pin");
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
+
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+let arr = ["a", "b", "c", "d", "e"];
+// console.log(arr.slice(2));
+// console.log(arr.slice(-3,-1));
+// console.log(arr.slice());
+
+// SPLICE METHOD (!!!MUTATES THE ARRAY!!!)
+// console.log(arr.splice(2));
+// arr.splice(-1);
+// arr.splice(1, 2);
+// console.log(arr);
+
+// Reverse (!!!MUTATES THE ARRAY!!!)
+// const arr2 = ['j', 'i', 'h', 'g', 'f'];
+// console.log(arr2.reverse());
+// console.log(arr2);
+
+// CONCAT
+// const letters = arr.concat(arr2);
+// console.log(letters);
+
+// JOIN
+// console.log(letters.join('-'));
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for(const movement of movements ){
+//   if(movement > 0){
+//     console.log(`You deposited ${movement}`);
+//   }else{
+//     console.log(`You withdrew ${Math.abs(movement)}`);
+//   }
+// }
+
+// forEach requires a callback function
+// You cant use BREAK or CONTINUE in forEach, they dont work
+// movements.forEach(function(mov, index, array){
+//   if(mov > 0){
+//     console.log(`${index + 1} You deposited ${mov}`);
+//   }else{
+//     console.log(`${index + 1} You withdrew ${Math.abs(mov)}`);
+//   }
+// })
+
+// MAP
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
+
+// currencies.forEach(function(value, key, map){
+//   console.log(`${key}: ${value}`);
+// })
+
+// Set
+// const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+// console.log(currenciesUnique);
+
+// SET DOES NOT HAVE KEYS AND INDEXES
+// currenciesUnique.forEach(function(value, _, map){
+//   console.log(`${value}: ${value}`);
+// })
+
+// CODE CHALLENGE
+
+// const checkDogs = function(dogsJulia, dogsKate){
+//   let juliaCorrected = dogsJulia.slice();
+// console.log(juliaCorrected);
+// juliaCorrected.splice(0,1);
+// juliaCorrected.splice(-2);
+
+//   const dogs = juliaCorrected.concat(dogsKate);
+//   console.log(dogs);
+//   dogs.forEach(function(dog, index){
+// if(dog >= 3){
+//   console.log(`Dog number ${index+ 1} is an adult, and is ${dog} years old`);
+// }else{
+//   console.log(`Dog number ${index + 1} is still a puppy 🐶`);
+// }
+//   })
+// };
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+
+// MAP METHOD
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+
+// console.log(movements);
+// console.log(movementsUSD);
+
+// const movementsDescript = movements.map((mov, i, arr) =>
+//   `Movement ${i+ 1}: ${mov > 0 ? 'Deposited' : 'Withdrew' } ${Math.abs(mov)}`
+// );
+
+// console.log(movementsDescript);
+
+// FILTER METHOD
+// const deposits = movements.filter(mov => mov > 0);
+// console.log(deposits);
+
+// const withdrawals = movements.filter(mov => mov < 0);
+// console.log(withdrawals);
+
+// REDUCE METHOD (LIKE A SNOWBALL)
+// const balance = movements.reduce((acc, curr) => acc + curr,0);
+// console.log(balance);
+
+// Maximum using REDUCE
+
+// const max = movements.reduce((acc, mov) => {
+//   if(acc > mov)
+//     return acc;
+//   else
+//     return mov;
+// }, movements[0]);
+
+// console.log(max);
+
+// CODE CHALLENGE
+// const calcAverageHumanAge = function(ages){
+//   const humanAge = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4 ));
+//   console.log(ages);
+//   console.log(humanAge);
+
+//   const humanAgeFiltered = humanAge.filter(age => age >= 18);
+//   console.log(humanAge);
+//   console.log(humanAgeFiltered);
+
+//   let avgHumanAge = humanAgeFiltered.reduce((acc, curr ) => acc + curr, 0) / humanAgeFiltered.length;
+//   console.log(avgHumanAge);
+// }
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+
+// CODE CHALLENGE
+// const calcAverageHumanAge = (ages) =>
+//   ages
+//     .map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
+//     .filter((age) => age >= 18)
+//     .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+
+// FIND METHOD
+// const firstWithdrawal = movements.find((mov) => mov < 0);
+// console.log(movements);
+// console.log(firstWithdrawal);
+
+// const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+// console.log(account);
+
+// for (const acc of accounts) {
+//   if (acc.owner === "Jessica Davis") {
+//     console.log(acc);
+//   }
+// }
+
+// SOME AND EVERY METHOD
+// console.log(movements.some((mov) => mov > 0));
+// console.log(movements.every((mov) => mov > 0));
+// console.log(account4.movements.every((mov) => mov > 0));
+
+// FLAT METHOD
+// --One level of nesting
+// const makeflat = [[1, 2, 3], [4, 5, 6], 7, 8];
+// console.log(makeflat.flat());
+
+// --for deeper levels of nesting
+// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// console.log(arrDeep.flat(2));
+
+// const accountMovements = accounts.map((acc) => acc.movements);
+// console.log(accountMovements);
+// const allMovements = accountMovements.flat();
+// console.log(allMovements);
+
+// const overalBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// console.log(overalBalance);
+
+// const overalBalanceChained = accounts
+//   .map((acc) => acc.movements)
+//   .flat(1)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(overalBalanceChained);
+
+// FLATMAP METHOD (Only goes one level deep)
+// const overalBalance2 = accounts
+//   .flatMap((acc) => acc.movements)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(overalBalance2);
+
+// FLAT using RECURSION
+// function flatten(ary) {
+//   var ret = [];
+//   for(var i = 0; i < ary.length; i++) {
+//       if(Array.isArray(ary[i])) {
+//           ret = ret.concat(flatten(ary[i]));
+//       } else {
+//           ret.push(ary[i]);
+//       }
+//   }
+//   return ret;
+// }
+
+// flatten([[[[[0]], [1]], [[[2], [3]]], [[4], [5]]]]) // [0, 1, 2, 3, 4, 5]
+
+// SORTING BASIC
+// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners.sort()); // Works on strings, converts to string first and then sorts
+
+// console.log(movements.sort()); //Will not work on numbers
+
+// return < 0, A, B keep order
+// return > 0, B, A switch order
+// movements.sort(
+//   (a, b) =>
+// if(a > b)
+//   return 1;
+// if(a < b)
+//   return -1;
+//     a - b
+// );
+// console.log(movements);
+
+// FILL METHOD
+// const x = new Array(7);
+// console.log(x.fill(1));
+// console.log(x.fill(1, 3, 5));
+
+// FROM METHOD
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y);
+
+// const z = Array.from({ length: 7 }, (_, i) => i + 1); //using "_" in place of curr element
+// console.log(z);
+
+// const diceRolls = Array.from(
+//   { length: 100 },
+//   () => Math.floor(Math.random() * 6) + 1
+// );
+// console.log(diceRolls);
+
+// ARRAY METHODS PRACTICE
+// const arrayAllMovements = accounts.flatMap((acc) => acc.movements);
+// console.log(arrayAllMovements);
+// 1
+
+// let bankDepositSum = accounts
+//   .map((acc) => acc.movements)
+//   .flat(1)
+//   .filter((mov) => mov > 0)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(bankDepositSum);
+
+// OR we can use flatMap()
+// bankDepositSum = accounts
+//   .flatMap((acc) => acc.movements)
+//   .filter((mov) => mov > 0)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(bankDepositSum);
+
+// 2
+// let numDeposits1000 = accounts
+//   .flatMap((acc) => acc.movements)
+//   .filter((mov) => mov > 1000).length;
+// console.log(numDeposits1000);
+
+// using reduce
+// numDeposits1000 = accounts
+//   .flatMap((acc) => acc.movements)
+//   .reduce((acc, mov) => (mov > 1000 ? ++acc : acc), 0);
+
+// console.log(numDeposits1000);
+
+// 3
+// const { deposits, withdrawals } = accounts
+//   .flatMap((acc) => acc.movements)
+//   .reduce(
+//     (sums, curr) => {
+// curr > 0 ? sums.deposits += curr : sums.withdrawals += curr;
+//       sums[curr > 0 ? "deposits" : "withdrawals"] += curr;
+//       return sums;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+
+// console.log(deposits, withdrawals);
+
+// 4
+// const convertTitleCase = function (str) {
+//   return str[0].toUpperCase() + str.slice(1);
+// };
+
+// console.log(convertTitleCase("apple banana"));
+
+// CODE CHALLENGE
+// const dogs = [
+//   { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
+//   { weight: 8, curFood: 200, owners: ["Matilda"] },
+//   { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
+//   { weight: 32, curFood: 340, owners: ["Michael"] },
+// ];
+
+// dogs.forEach(function (dog) {
+//   let foodRec = dog.weight ** 0.75 * 28;
+//   foodRec = foodRec.toFixed(2);
+//   dog.foodRec = Number(foodRec);
+//   console.log(dog);
+// });
+
+// const SarahsDogs = dogs.filter(dog => dog.owners.includes('Sarah'));
+// const SarahsDogs = dogs.find(dog => dog.owners.includes('Sarah')); Another method to find, but will return object not an array
+// console.log(SarahsDogs);
+
+// SarahsDogs.forEach((dog) =>
+//   dog.curFood < dog.foodRec
+//     ? console.log("Eating too little")
+//     : console.log("Eating too much")
+// );
+
+// const ownersEatTooMuch = dogs
+//   .filter((dog) => dog.foodRec < dog.curFood)
+//   .flatMap((dog) => dog.owners);
+// const ownersEatTooLittle = dogs
+//   .filter((dog) => dog.foodRec > dog.curFood)
+//   .flatMap((dog) => dog.owners);
+// console.log(ownersEatTooMuch);
+// console.log(ownersEatTooLittle);
+
+// console.log(ownersEatTooMuch.join(" and ") + "'s dogs eat too much");
+// console.log(ownersEatTooLittle.join(" and ") + "'s dogs eat too little");
+
+// console.log(dogs.some((dog) => dog.curFood === dog.foodRec));
+// console.log(
+//   dogs.some(
+//     (dog) => dog.curFood > dog.foodRec * 0.9 && dog.curFood < dog.foodRec * 1.1
+//   )
+// );
+
+// const dogsOkayFood = dogs.filter(
+//   (dog) => dog.curFood > dog.foodRec * 0.9 && dog.curFood < dog.foodRec * 1.1
+// );
+// console.log(dogsOkayFood);
+
+// console.log(dogs.slice());
+
+// const dogsCopy = dogs.slice().sort((a, b) => a.foodRec - b.foodRec);
+// console.log(dogsCopy);
+
+// **************************************NUMBERS**************************************
+console.log(23 === 23.0);
+console.log(0.1 + 0.2 === 0.3);
+console.log("abc" + "def");
+// Conversion
+console.log(+"23"); // another way of doing Number('23');
+
+// Parsing
+console.log(Number.parseInt("43px", 10));
+console.log(Number.parseInt("e50", 10));
+
+console.log(Number.parseFloat("2.4rem"));
+console.log(Number.parseInt("2.4rem"));
+console.log(Number.parseFloat("ab2.4rem"));
+console.log(Number.parseFloat("2.0e2.4rem"));
+
+console.log(Number.isNaN(20));
+console.log(Number.isNaN(+"20X"));
+console.log(Number.isNaN(23 / 0));
+
+// Best way to check if a value is Number
+console.log(Number.isFinite(20));
+console.log(Number.isFinite("20"));
+console.log(Number.isFinite(+"20X"));
+console.log(Number.isFinite(23 / 0));
+
+console.log(Number.isInteger(23));
+
+console.log(Math.sqrt(36));
+
+console.log(Math.max(5, 1, 2, 3, 44, 5, 2, 35));
+console.log(Math.max(5, 1, 2, 3, 44, 5, 2, 35));
+console.log(Math.max(5, 1, 2, "3px", 44, 5, 2, 35));
+
+console.log(Math.PI * Number.parseFloat("10px") ** 2);
+
+const randomInt = function (min, max = 0) {
+  return Math.trunc(Math.random() * (max - min) + 1) + min;
 };
 
-document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
-document.querySelector('.answers').addEventListener('click', poll.displayResults.bind(poll, 'string'));
+console.log(randomInt(10, 20));
 
-poll.displayResults.call({
-  answers: [5, 2, 3]
-}, 'string');
+// toFixed() Method
+// Always returns a string and not a number
+console.log(+(2.78283).toFixed(9));
+console.log((2.78283).toFixed(9));
+
+// Numeric seperator
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const priceCents = 345_99;
+console.log(priceCents);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+// console.log(Number('200_57')); will not work with strings
+console.log(parseInt("230_00"));
+
+// BigInt ES2020
+//Max no. that JS can represent (total 64 bits, 53 for no. rest for position of decimal or sign)
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(23432423423423423423498730562n);
+// Operations
+console.log(13312313123123442313n * 1000n);
+// console.log(13312313123123442313n * 1000); does not work
+console.log(20n === 20);
+
+// Math() operations do not work on BigInt
+console.log(10 / 3);
+console.log(10n / 3n);
+
+// Create a date
+const now = new Date();
+console.log(now);
+console.log(new Date("Nov 18 2021 12:04:18"));
+console.log(new Date("December 24, 2015"));
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+console.log(new Date(2037, 10, 31));
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.getMilliseconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+console.log(new Date(2142237180000));
+
+console.log(Date.now());
+console.log(+future);
+const calcDaysPassed = (date1, date2) => Math.abs(date2 - date1);
+const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
+console.log(days1 / (1000 * 60 * 60 * 24));
+
+// International Dates
+const num = 3884764.23;
+
+const options = {
+  style: "currency",
+  currency: 'EUR',
+  unit: "mile-per-hour",
+  useGrouping: false
+};
+
+console.log("US:", new Intl.NumberFormat("en-US", options).format(num));
+console.log("Germany:", new Intl.NumberFormat("de-DE", options).format(num));
+console.log("GB:", new Intl.NumberFormat("en-GB", options).format(num));
+console.log("SY:", new Intl.NumberFormat("ar-SY", options).format(num));
+
+// TIMEOUTS and INTERVALS
+// This array is used for case whre we need to cancel the timer in between
+const ingredients = ['olives', 'spinach','capsicum']
+
+const pizzaTimer = setTimeout((ing1, ing2) => {
+  console.log(`here is your pizza with ${ing1} & ${ing2}`);
+}, 3000, ...ingredients);
+console.log('Waiting...');
+if(ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval(function(){
+//   const now = new Date();
+//   const hours = `${now.getHours()}`.padStart(2, 0);
+//   const min = `${now.getMinutes()}`.padStart(2, 0);
+//   const sec = `${now.getSeconds()}`.padStart(2, 0);
+//   console.log(`${hours}:${min}:${sec}`); 
+// }, 1000);
+
+/////////////////////////////////////////////////////////////////////////////////
+// ADVANCED DOM MANIPULATION
+
+// console.log(document.documentElement);
+// console.log(document.body);
+// console.log(document.head);
+
+// // Creating and inserting elements
+// // .insertAdjacentHTML();
+
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+// message.textContent =
+//   'We use cookies for improved functionality and analytics.';
+// message.innerHTML =
+//   'We use cookies for improved functionality and analytics. <button class="btn btn--close--cookie" > Got it! </button>';
+
+// // prepend and append only isert elements once and so they can be used to move elments too!//////////
+// header.prepend(message);
+// header.append(message);
+
+// remove element
+// document
+//   .querySelector('.btn--close-cookie')
+//   .addEventListener('click', function () {
+//     // message.remove();
+//     message.parentElement.removeChild(message);
+//   });
+
+// // Styles
+// message.style.backgroundColor = '#37383d';
+// message.style.width = '104.7%';
+
+// console.log(getComputedStyle(message).height);
+// message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
+// console.log(message.style.height);
+
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// // Attributes
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.alt);
+// console.log(logo.src);
+// console.log(logo.getAttribute('src'));
+
+// // Non Standard
+// console.log(logo.designer);
+// console.log(logo.getAttribute('designer'));
+
+// // Data Attributes
+// console.log(logo.dataset.versionNumber);
+
+// // Classes
+// logo.classList.contains();
+
+// const btnScrollTo = document.querySelector('.btn--scroll-to');
+// const section1 = document.querySelector('#section--1');
+
+// btnScrollTo.addEventListener('click', function (e) {
+//   const s1coords = section1.getBoundingClientRect();
+//   console.log(s1coords);
+
+//   console.log(e.target.getBoundingClientRect());
+
+//   // scroll position
+//   console.log('X and Y scroll pos.:', window.scrollX, window.scrollY);
+//   console.log(
+//     'Height/Width of viewport:',
+//     document.documentElement.clientHeight,
+//     document.documentElement.clientWidth
+//   );
+
+  // Scrolling
+  // window.scrollTo(s1coords.left + window.scrollX, s1coords.top + window.scrollY);
+
+  // for smooth scrolling
+//   window.scrollTo({left: s1coords.left + window.scrollX, top: s1coords.top + window.scrollY, behavior: "smooth"});
+
+// });
+
+
+  // MODERN WAY OF SCROLLING
+//   section1.scrollIntoView({behavior: 'smooth'})
+
+// });
+
+// const h1 = document.querySelector('h1');
+// const alertH1 = function(e){
+//   alert('addEventListener: you are reading heading');
+
+//   // h1.removeEventListener('mouseenter', alertH1);
+// ;}
+
+// or we can use timeout to remove event
+
+// setTimeout(() => {
+//   h1.removeEventListener('mouseenter', alertH1);
+// }, 3000);
+
+// h1.addEventListener('mouseenter', alertH1);
+
+// Old School way 1
+// h1.onmouseenter = function(e){
+//   alert('addEventListener: you are reading heading');
+// }
+
+// Old School way 2
+{/* <div onclick="alert('HTML alert')" > </div> */}
+
+/////////////////////////////////////////////////////////////////////////////////
 
 // ***************************************** OOPS *******************************************
 // const tipCalc = function(val){
